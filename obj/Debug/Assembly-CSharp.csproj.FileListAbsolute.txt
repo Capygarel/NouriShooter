@@ -1,0 +1,2 @@
+A:\Création Jeu vidéo\Unity Projects\Cours\Create with Code\Projects\Prototype 2\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+A:\Création Jeu vidéo\Unity Projects\Cours\Create with Code\Projects\Prototype 2\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
