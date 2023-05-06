@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
     public float horizontalAxis;
     public float verticalAxis;
 
+    public UnityEvent onPlayerDeath;
+
     public ParticleSystem hurtParticles;
+    public ParticleSystem healParticles;
+    public ParticleSystem powerupParticles;
 
     private Rigidbody rb;
 
     public GameObject projectilePrefab;
+    public bool hasPowerUp;
     public float speed = 10.0f;
 
     private readonly int xRange = 25;
@@ -20,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public int lives = 3;
 
 
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -60,37 +66,66 @@ public class PlayerController : MonoBehaviour
         if (transform.position.z > zRange)
             transform.position = new Vector3(transform.position.x, transform.position.y, zRange);
 
-        /*
-         * Test pour tenter de retourner le personnage face à l'axe vers lequel il marche 
-         * 
-         * 
-        */
 
         //Checks for SpaceBar press to instantiate a new projectile Prefab
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(projectilePrefab, transform.position, transform.rotation);
+            if (hasPowerUp)
+            {
+                Quaternion secondRotation = transform.rotation * Quaternion.Euler(0, 45, 0);
+                Quaternion thirdRotation = transform.rotation * Quaternion.Euler(0, -45, 0);
+                Instantiate(projectilePrefab, transform.position, transform.rotation);
+                Instantiate(projectilePrefab, transform.position, secondRotation);
+                Instantiate(projectilePrefab, transform.position, thirdRotation);
+            }
+            else
+            {
+                Instantiate(projectilePrefab, transform.position, transform.rotation);
+            }
+            
         }
         
     }
        
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.CompareTag("Enemy"))
         {
             hurtParticles.Play();
             lives--;
             GameObject.Find("Canvas").GetComponent<UIManager>().SetHealth(lives);
             if (lives == 0)
             {
-                Debug.Log("Game over");
-                #if UNITY_EDITOR
-                    UnityEditor.EditorApplication.isPlaying = false;
-                #endif
-                    Application.Quit();
+                StartCoroutine(DeathAnimation());
             }
+        }else if(other.gameObject.CompareTag("Powerup"))
+        {
+            Destroy(other.gameObject);
+            hasPowerUp = true;
+            powerupParticles.Play();
+            StartCoroutine(PowerupCooldown(other.gameObject.GetComponent<PowerUp>().duration));
+
+        }else if(other.gameObject.CompareTag("Heal"))
+        {
+            Destroy(other.gameObject);
+            lives++;
+            GameObject.Find("Canvas").GetComponent<UIManager>().SetHealth(lives);
+            healParticles.Play();
         }
+    }
+
+    IEnumerator PowerupCooldown(float powerUpDuration)
+    {
+        yield return new WaitForSeconds(powerUpDuration);
+        hasPowerUp = false;
+        powerupParticles.Stop();
+    }
+    IEnumerator DeathAnimation()
+    {
+        GetComponent<BoxCollider>().isTrigger = false;
+        yield return new WaitForSeconds(.1f);
+        onPlayerDeath.Invoke();
     }
 }
 

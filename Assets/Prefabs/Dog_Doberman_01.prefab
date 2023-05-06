@@ -4391,6 +4391,10 @@ MonoBehaviour:
   speed: 15
   points: 40
   autoAim: 1
+  powerupPrefab: {fileID: 246862778057136517, guid: 42b18a31a03516f43938903601bac38e, type: 3}
+  healPrefab: {fileID: 4537804178602777869, guid: d9035ea97e909354fa78db30d6f6cc88, type: 3}
+  chancesToDropPowerup: 45
+  chancesToDropHeal: 20
 --- !u!114 &4728467446379447933
 MonoBehaviour:
   m_ObjectHideFlags: 0

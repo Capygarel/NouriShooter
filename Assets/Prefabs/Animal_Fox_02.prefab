@@ -1055,6 +1055,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   points: 15
+  autoAim: 0
+  powerupPrefab: {fileID: 246862778057136517, guid: 42b18a31a03516f43938903601bac38e, type: 3}
+  healPrefab: {fileID: 4537804178602777869, guid: d9035ea97e909354fa78db30d6f6cc88, type: 3}
+  chancesToDropPowerup: 15
+  chancesToDropHeal: 25
 --- !u!1 &3948326879866379255
 GameObject:
   m_ObjectHideFlags: 0

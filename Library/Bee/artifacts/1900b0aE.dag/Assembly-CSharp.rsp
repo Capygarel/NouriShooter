@@ -345,12 +345,16 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/Scripts/DeathScreen.cs"
 "Assets/Scripts/DestroyOutOfBounds.cs"
 "Assets/Scripts/DetectCollision.cs"
 "Assets/Scripts/EnemyStats.cs"
 "Assets/Scripts/MoveForward.cs"
+"Assets/Scripts/PauseMenu.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/PowerUp.cs"
 "Assets/Scripts/SpawnManager.cs"
+"Assets/Scripts/TitleScreen.cs"
 "Assets/Scripts/UIManager.cs"
 -langversion:9.0
 

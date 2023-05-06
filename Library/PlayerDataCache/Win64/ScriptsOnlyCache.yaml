@@ -1,12 +1,16 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - DeathScreen
     - DestroyOutOfBounds
     - DetectCollision
     - EnemyStats
     - MoveForward
+    - PauseMenu
     - PlayerController
+    - PowerUp
     - SpawnManager
+    - TitleScreen
     - UIManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -23,8 +27,10 @@ ScriptsOnlyBuild:
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.Image
   serializedClasses:
     Unity.TextMeshPro:
     - TMPro.FaceInfo_Legacy
@@ -42,15 +48,47 @@ ScriptsOnlyBuild:
     - TMPro.TMP_Style
     - TMPro.VertexGradient
     UnityEngine.CoreModule:
+    - UnityEngine.Events.ArgumentCache
     - UnityEngine.Events.PersistentCallGroup
+    - UnityEngine.Events.PersistentListenerMode
+    - UnityEngine.Events.UnityEvent
     UnityEngine.TextCoreFontEngineModule:
     - UnityEngine.TextCore.FaceInfo
     - UnityEngine.TextCore.Glyph
     - UnityEngine.TextCore.GlyphMetrics
     - UnityEngine.TextCore.GlyphRect
     UnityEngine.UI:
+    - UnityEngine.UI.AnimationTriggers
+    - UnityEngine.UI.Button/ButtonClickedEvent
+    - UnityEngine.UI.ColorBlock
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
-  methodsToPreserve: []
+    - UnityEngine.UI.Navigation
+    - UnityEngine.UI.SpriteState
+  methodsToPreserve:
+  - assembly: Assembly-CSharp
+    fullTypeName: TitleScreen
+    methodName: QuitGame
+  - assembly: Assembly-CSharp
+    fullTypeName: TitleScreen
+    methodName: StartScene
+  - assembly: Assembly-CSharp
+    fullTypeName: DeathScreen
+    methodName: ReStartScene
+  - assembly: Assembly-CSharp
+    fullTypeName: PauseMenu
+    methodName: ResumeGame
+  - assembly: Assembly-CSharp
+    fullTypeName: PauseMenu
+    methodName: QuitGame
+  - assembly: Assembly-CSharp
+    fullTypeName: PauseMenu
+    methodName: QuitGame
+  - assembly: Assembly-CSharp
+    fullTypeName: DeathScreen
+    methodName: displayDeathScreen
+  - assembly: Assembly-CSharp
+    fullTypeName: DeathScreen
+    methodName: displayDeathScreen
   sceneClasses:
     Assets/Scenes/Prototype 2.unity:
     - Class: 1
@@ -70,8 +108,6 @@ ScriptsOnlyBuild:
     - Class: 43
       Script: {instanceID: 0}
     - Class: 48
-      Script: {instanceID: 0}
-    - Class: 49
       Script: {instanceID: 0}
     - Class: 54
       Script: {instanceID: 0}
@@ -94,37 +130,41 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1652}
+      Script: {instanceID: 1584}
     - Class: 114
-      Script: {instanceID: 1836}
+      Script: {instanceID: 1654}
     - Class: 114
-      Script: {instanceID: 2152}
+      Script: {instanceID: 1838}
     - Class: 114
-      Script: {instanceID: 2500}
+      Script: {instanceID: 2386}
     - Class: 114
-      Script: {instanceID: 2562}
+      Script: {instanceID: 2504}
     - Class: 114
-      Script: {instanceID: 2764}
+      Script: {instanceID: 2566}
     - Class: 114
-      Script: {instanceID: 3084}
+      Script: {instanceID: 2768}
     - Class: 114
-      Script: {instanceID: 4016}
+      Script: {instanceID: 3040}
     - Class: 114
-      Script: {instanceID: 4262}
+      Script: {instanceID: 3088}
     - Class: 114
-      Script: {instanceID: 4936}
+      Script: {instanceID: 3606}
     - Class: 114
-      Script: {instanceID: 5470}
+      Script: {instanceID: 3682}
     - Class: 114
-      Script: {instanceID: 5548}
+      Script: {instanceID: 4946}
     - Class: 114
-      Script: {instanceID: 5616}
+      Script: {instanceID: 5480}
     - Class: 114
-      Script: {instanceID: 5924}
+      Script: {instanceID: 5558}
     - Class: 114
-      Script: {instanceID: 6370}
+      Script: {instanceID: 5626}
     - Class: 114
-      Script: {instanceID: 7034}
+      Script: {instanceID: 5934}
+    - Class: 114
+      Script: {instanceID: 6380}
+    - Class: 114
+      Script: {instanceID: 7044}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -139,6 +179,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 199
       Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
     - Class: 222
       Script: {instanceID: 0}
     - Class: 223
@@ -148,6 +190,69 @@ ScriptsOnlyBuild:
     - Class: 258
       Script: {instanceID: 0}
     - Class: 850595691
+      Script: {instanceID: 0}
+    Assets/Scenes/Title Screen.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1584}
+    - Class: 114
+      Script: {instanceID: 2154}
+    - Class: 114
+      Script: {instanceID: 2566}
+    - Class: 114
+      Script: {instanceID: 2768}
+    - Class: 114
+      Script: {instanceID: 3040}
+    - Class: 114
+      Script: {instanceID: 4024}
+    - Class: 114
+      Script: {instanceID: 4270}
+    - Class: 114
+      Script: {instanceID: 4306}
+    - Class: 114
+      Script: {instanceID: 4946}
+    - Class: 114
+      Script: {instanceID: 5480}
+    - Class: 114
+      Script: {instanceID: 5626}
+    - Class: 114
+      Script: {instanceID: 5934}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -164,7 +269,7 @@ ScriptsOnlyBuild:
     className: Image
   - hash:
       serializedVersion: 2
-      Hash: 06f33c57486c4ffeb6582132c838298b
+      Hash: 63faea8f815fe4f58edb396c5c9b8527
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemyStats
@@ -260,13 +365,19 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
+      Hash: c32cf2df98bb97f9f7e9c443233a8bbe
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DeathScreen
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnBecameVisibleMessageListener
   - hash:
       serializedVersion: 2
-      Hash: eb881e561d894de224652aa13df4df9a
+      Hash: 197a2d0e5ae7bf2d90ea694ff3adfff2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -470,6 +581,12 @@ ScriptsOnlyBuild:
     className: UnityOnCollisionExit2DMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 2c78508d67df37094377b29be4b72d85
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PowerUp
+  - hash:
+      serializedVersion: 2
       Hash: 2574ac7d50617d23cdefe4ad22f5e1ad
     assemblyName: Unity.VisualScripting.Flow.dll
     namespaceName: Unity.VisualScripting
@@ -480,6 +597,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ActivationTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 806dafe9d99f3c71a4a61163fde430f8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PauseMenu
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -570,6 +693,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnCancelMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TitleScreen
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -800,7 +929,7 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 57dcb92efa52cef9be1744c3db3f8cf2
+      Hash: 1b9df6d2035084a98779684d5780e037
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -968,5 +1097,6 @@ ScriptsOnlyBuild:
     className: UnityOnSliderValueChangedMessageListener
   platform: 19
   scenePathNames:
+  - Assets/Scenes/Title Screen.unity
   - Assets/Scenes/Prototype 2.unity
-  playerPath: "A:/Cr\xE9ation Jeu vid\xE9o/Unity Projects/NouriShooter/builds/0..1/NouriShooter.exe"
+  playerPath: "A:/Cr\xE9ation Jeu vid\xE9o/Unity Projects/NouriShooter/builds/0.2/NouriShooter.exe"

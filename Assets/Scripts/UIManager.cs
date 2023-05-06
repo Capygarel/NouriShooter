@@ -19,6 +19,8 @@ public class UIManager : MonoBehaviour
     public TMPro.TextMeshProUGUI scoreText;
     public TMPro.TextMeshProUGUI scoreIncreaseText;
 
+    public UnityEvent onTimeUp;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +71,9 @@ public class UIManager : MonoBehaviour
         timerText.text = "Time\n"  + string.Format("{0:0}:{1:00}", minutes, seconds);
 
         timeRemaining -= Time.deltaTime;
+
+        if (timeRemaining <= 0)
+            onTimeUp.Invoke();
 
 
     }

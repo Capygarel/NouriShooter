@@ -7,6 +7,8 @@ TagManager:
   - Dog
   - Projectile
   - Enemy
+  - Powerup
+  - Heal
   layers:
   - Default
   - TransparentFX
