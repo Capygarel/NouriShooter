@@ -27,7 +27,7 @@ public class DetectCollision : MonoBehaviour
 
             GameObject.Find("Canvas").GetComponent<UIManager>().IncreaseScore(scoreToAdd);
 
-            Destroy(other.gameObject);
+            other.GetComponent<EnemyStats>().DestroyEnemyWithAnimation();
             Destroy(gameObject);
         }
     }

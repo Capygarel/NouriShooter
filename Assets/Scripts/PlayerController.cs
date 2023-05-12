@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
-    public float horizontalAxis;
-    public float verticalAxis;
+    private float horizontalAxis;
+    private float verticalAxis;
 
     public UnityEvent onPlayerDeath;
 
@@ -17,11 +17,17 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
 
     public GameObject projectilePrefab;
-    public bool hasPowerUp;
+    private bool hasPowerUp;
+
     public float speed = 10.0f;
+    public float reloadTime = .4f;
+    private float currentReload;
 
     private readonly int xRange = 25;
     private readonly int zRange = 25;
+    private Vector3 originalTransform;
+    private Quaternion originalRotation;
+
     private int isInputNegative;
     public int lives = 3;
 
@@ -31,6 +37,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        originalTransform = transform.position;
+        originalRotation = transform.rotation;
+        currentReload = reloadTime;
     }
 
     // Update is called once per frame
@@ -69,8 +78,11 @@ public class PlayerController : MonoBehaviour
 
         //Checks for SpaceBar press to instantiate a new projectile Prefab
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        currentReload -= Time.deltaTime;
+
+        if (Input.GetKey(KeyCode.Space) && currentReload <= 0)
         {
+            currentReload = reloadTime;
             if (hasPowerUp)
             {
                 Quaternion secondRotation = transform.rotation * Quaternion.Euler(0, 45, 0);
@@ -86,6 +98,12 @@ public class PlayerController : MonoBehaviour
             
         }
         
+    }
+
+    public void NewWave()
+    {
+        transform.position = originalTransform;
+        transform.rotation = originalRotation;
     }
        
     private void OnTriggerEnter(Collider other)
@@ -121,6 +139,7 @@ public class PlayerController : MonoBehaviour
         hasPowerUp = false;
         powerupParticles.Stop();
     }
+
     IEnumerator DeathAnimation()
     {
         GetComponent<BoxCollider>().isTrigger = false;

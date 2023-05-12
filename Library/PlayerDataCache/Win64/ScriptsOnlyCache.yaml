@@ -73,7 +73,7 @@ ScriptsOnlyBuild:
     methodName: StartScene
   - assembly: Assembly-CSharp
     fullTypeName: DeathScreen
-    methodName: ReStartScene
+    methodName: ChoiceButton
   - assembly: Assembly-CSharp
     fullTypeName: PauseMenu
     methodName: ResumeGame
@@ -85,10 +85,22 @@ ScriptsOnlyBuild:
     methodName: QuitGame
   - assembly: Assembly-CSharp
     fullTypeName: DeathScreen
-    methodName: displayDeathScreen
+    methodName: DisplayEndScreen
   - assembly: Assembly-CSharp
     fullTypeName: DeathScreen
-    methodName: displayDeathScreen
+    methodName: PlayerDead
+  - assembly: Assembly-CSharp
+    fullTypeName: SpawnManager
+    methodName: StartNewWave
+  - assembly: Assembly-CSharp
+    fullTypeName: UIManager
+    methodName: NewWave
+  - assembly: Assembly-CSharp
+    fullTypeName: PlayerController
+    methodName: NewWave
+  - assembly: Assembly-CSharp
+    fullTypeName: DeathScreen
+    methodName: PlayerDead
   sceneClasses:
     Assets/Scenes/Prototype 2.unity:
     - Class: 1
@@ -130,41 +142,41 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1584}
+      Script: {instanceID: 1582}
     - Class: 114
-      Script: {instanceID: 1654}
+      Script: {instanceID: 1652}
     - Class: 114
-      Script: {instanceID: 1838}
+      Script: {instanceID: 1836}
     - Class: 114
-      Script: {instanceID: 2386}
+      Script: {instanceID: 2384}
     - Class: 114
-      Script: {instanceID: 2504}
+      Script: {instanceID: 2502}
     - Class: 114
-      Script: {instanceID: 2566}
+      Script: {instanceID: 2564}
     - Class: 114
-      Script: {instanceID: 2768}
+      Script: {instanceID: 2766}
     - Class: 114
-      Script: {instanceID: 3040}
+      Script: {instanceID: 3038}
     - Class: 114
-      Script: {instanceID: 3088}
+      Script: {instanceID: 3086}
     - Class: 114
-      Script: {instanceID: 3606}
+      Script: {instanceID: 3604}
     - Class: 114
-      Script: {instanceID: 3682}
+      Script: {instanceID: 3680}
     - Class: 114
-      Script: {instanceID: 4946}
+      Script: {instanceID: 4944}
     - Class: 114
-      Script: {instanceID: 5480}
+      Script: {instanceID: 5478}
     - Class: 114
-      Script: {instanceID: 5558}
+      Script: {instanceID: 5556}
     - Class: 114
-      Script: {instanceID: 5626}
+      Script: {instanceID: 5624}
     - Class: 114
-      Script: {instanceID: 5934}
+      Script: {instanceID: 5932}
     - Class: 114
-      Script: {instanceID: 6380}
+      Script: {instanceID: 6378}
     - Class: 114
-      Script: {instanceID: 7044}
+      Script: {instanceID: 7042}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -215,29 +227,29 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1584}
+      Script: {instanceID: 1582}
     - Class: 114
-      Script: {instanceID: 2154}
+      Script: {instanceID: 2152}
     - Class: 114
-      Script: {instanceID: 2566}
+      Script: {instanceID: 2564}
     - Class: 114
-      Script: {instanceID: 2768}
+      Script: {instanceID: 2766}
     - Class: 114
-      Script: {instanceID: 3040}
+      Script: {instanceID: 3038}
     - Class: 114
-      Script: {instanceID: 4024}
+      Script: {instanceID: 4022}
     - Class: 114
-      Script: {instanceID: 4270}
+      Script: {instanceID: 4268}
     - Class: 114
-      Script: {instanceID: 4306}
+      Script: {instanceID: 4304}
     - Class: 114
-      Script: {instanceID: 4946}
+      Script: {instanceID: 4944}
     - Class: 114
-      Script: {instanceID: 5480}
+      Script: {instanceID: 5478}
     - Class: 114
-      Script: {instanceID: 5626}
+      Script: {instanceID: 5624}
     - Class: 114
-      Script: {instanceID: 5934}
+      Script: {instanceID: 5932}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -269,7 +281,7 @@ ScriptsOnlyBuild:
     className: Image
   - hash:
       serializedVersion: 2
-      Hash: 63faea8f815fe4f58edb396c5c9b8527
+      Hash: 1117008b31960440f55e86297c9cf1e5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemyStats
@@ -317,7 +329,7 @@ ScriptsOnlyBuild:
     className: UnityOnMouseExitMessageListener
   - hash:
       serializedVersion: 2
-      Hash: c0f97196120272d38bc1e1e15bb1b6ae
+      Hash: 88583391f9de5beeed369ceea41d41f3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SpawnManager
@@ -365,7 +377,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: c32cf2df98bb97f9f7e9c443233a8bbe
+      Hash: 7a649fe8a930a0ca6fbd7826892060e7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DeathScreen
@@ -377,7 +389,7 @@ ScriptsOnlyBuild:
     className: UnityOnBecameVisibleMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 197a2d0e5ae7bf2d90ea694ff3adfff2
+      Hash: d3991c12415030eb4a71ae0b674d1626
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -929,7 +941,7 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 1b9df6d2035084a98779684d5780e037
+      Hash: 71689f5ae00f2fb0ddaa1b6ce307a4d2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -1099,4 +1111,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Title Screen.unity
   - Assets/Scenes/Prototype 2.unity
-  playerPath: "A:/Cr\xE9ation Jeu vid\xE9o/Unity Projects/NouriShooter/builds/0.2/NouriShooter.exe"
+  playerPath: "A:/Cr\xE9ation Jeu vid\xE9o/Unity Projects/NouriShooter/builds/0.3/NouriShooter.exe"

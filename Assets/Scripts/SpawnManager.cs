@@ -1,27 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 
 public class SpawnManager : MonoBehaviour
 {
     public GameObject[] animalPrefabsArray;
     private GameObject animalSelected;
-    private float spawnRangeX = 25;
-    private float spawnRangeZ = 25;
-    private int startSpawnDelay = 2;
-    private float spawnInterval = 0.5f;
+
+    private float spawnRangeX = 30;
+    private float spawnRangeZ = 20;
+
+    private float startSpawnDelay = .5f;
+    public float spawnInterval = 1f;
+
     Vector3 spawnPosition;
+
+    public static int wavenumber;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnRandomAnimal", startSpawnDelay, spawnInterval);
+        wavenumber = 0;
+        StartNewWave();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void StartNewWave()
+    {
+        foreach (GameObject animal in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            Destroy(animal);
+        }
+
+        foreach (GameObject projectile in GameObject.FindGameObjectsWithTag("Projectile"))
+        {
+            Destroy(projectile);
+        }
+
+        if (GameObject.FindGameObjectWithTag("Heal") != null)
+            Destroy(GameObject.FindGameObjectWithTag("Heal"));
+
+        if (GameObject.FindGameObjectWithTag("Powerup") != null)
+            Destroy(GameObject.FindGameObjectWithTag("Powerup"));
+
+        InvokeRepeating("SpawnRandomAnimal", startSpawnDelay, spawnInterval);
+        spawnInterval -= 0.1f;
+        wavenumber++;
     }
 
     void SpawnRandomAnimal()

@@ -8,6 +8,9 @@ public class UIManager : MonoBehaviour
 {
     private int health;
 
+    public int maxNumberWaves;
+
+    private float globalTime;
     public float timeRemaining;
     private float lastSecond;
 
@@ -20,6 +23,7 @@ public class UIManager : MonoBehaviour
     public TMPro.TextMeshProUGUI scoreIncreaseText;
 
     public UnityEvent onTimeUp;
+    public UnityEvent onFinalWaveFinished;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +31,8 @@ public class UIManager : MonoBehaviour
         SetHealth(GameObject.Find("Player").GetComponent<PlayerController>().lives);
         DisplayScore();
         lastSecond = timeRemaining;
+        globalTime = timeRemaining;
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
@@ -34,6 +40,13 @@ public class UIManager : MonoBehaviour
     {
         
         UpdateTimer();
+    }
+
+    public void NewWave()
+    {
+        globalTime += 5;
+        timeRemaining = globalTime;
+        lastSecond = timeRemaining;
     }
 
     public void SetHealth(int newHealth)
@@ -73,7 +86,17 @@ public class UIManager : MonoBehaviour
         timeRemaining -= Time.deltaTime;
 
         if (timeRemaining <= 0)
-            onTimeUp.Invoke();
+        {
+            if(SpawnManager.wavenumber >= maxNumberWaves)
+            {
+                onFinalWaveFinished.Invoke();
+            }
+            else
+            {
+                onTimeUp.Invoke();
+            }
+        }
+           
 
 
     }
