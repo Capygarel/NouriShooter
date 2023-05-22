@@ -11,10 +11,12 @@ public class SpawnManager : MonoBehaviour
 
     private float spawnRangeX = 30;
     private float spawnRangeZ = 20;
+    public Camera cam;
 
     private float startSpawnDelay = .5f;
     public float spawnInterval = 1f;
 
+    public GameObject player;
     Vector3 spawnPosition;
 
     public static int wavenumber;
@@ -64,19 +66,24 @@ public class SpawnManager : MonoBehaviour
 
         animalSelected = animalPrefabsArray[index];
 
-        if(side == 0) //gauche
+
+
+        if (side == 0) //gauche
         {
-            spawnPosition = new Vector3(-spawnRangeX, 0, Random.Range(-spawnRangeZ,spawnRangeZ));
+            //spawnPosition = cam.ViewportToWorldPoint(new Vector3(0, Random.Range(0,1), cam.nearClipPlane));
+            spawnPosition = new Vector3(player.transform.position.x - spawnRangeX, 0, player.transform.position.z + Random.Range(-spawnRangeZ,spawnRangeZ));
             Instantiate(animalSelected, spawnPosition, Quaternion.Euler(new Vector3(0, 90, 0)));
         }
         else if (side == 1) //Haut
         {
-            spawnPosition = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0, spawnRangeZ);
+            //spawnPosition = cam.ViewportToWorldPoint(new Vector3(Random.Range(0, 1),1 , cam.nearClipPlane));
+            spawnPosition = new Vector3(player.transform.position.x + Random.Range(-spawnRangeX, spawnRangeX), 0, player.transform.position.z + spawnRangeZ);
             Instantiate(animalSelected, spawnPosition, animalSelected.transform.rotation);
         }
         else //droite
         {
-            spawnPosition = new Vector3(spawnRangeX, 0, Random.Range(-spawnRangeZ, spawnRangeZ));
+            //spawnPosition = cam.ViewportToWorldPoint(new Vector3(1, Random.Range(0, 1), cam.nearClipPlane));
+            spawnPosition = new Vector3(player.transform.position.x + spawnRangeX, 0, player.transform.position.z + Random.Range(-spawnRangeZ, spawnRangeZ));
             Instantiate(animalSelected,spawnPosition , Quaternion.Euler(new Vector3(0,-90,0 )));
         }
 
