@@ -10,5 +10,6 @@ public class Inventory : ScriptableObject
     void Start()
     {
         items.Add(new ItemInstance(newItemType));
+        
     }
 }

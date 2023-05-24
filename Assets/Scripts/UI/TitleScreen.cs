@@ -19,11 +19,13 @@ public class TitleScreen : MonoBehaviour
         
     }
 
+    //Load the Main Scene when Play is pressed
     public void StartScene()
     {
         SceneManager.LoadSceneAsync(sceneToStart);
     }
 
+    //Quit the game when quit is pressed
     public void QuitGame()
     {
         Application.Quit();

@@ -43,7 +43,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetHealth(GameObject.FindWithTag("Player").GetComponent<PlayerController>().lives);
+        SetHealth(GameObject.FindWithTag("Player").GetComponent<PlayerController>().GetCurrentHP());
         DisplayScore();
         lastSecond = timeRemaining;
         globalTime = timeRemaining;

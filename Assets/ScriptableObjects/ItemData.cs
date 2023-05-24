@@ -11,5 +11,8 @@ public class ItemData : ScriptableObject
     public string description;
     public float damage;
     public float cooldown;
+    public GameObject model;
+    public float changeReloadTime, changeMaxHP, changeSpeed, changeshotSpeed, firingRateModifier, damageModifier, rangeModifier;
+
 
 }

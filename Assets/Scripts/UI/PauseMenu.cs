@@ -13,6 +13,9 @@ public class PauseMenu : MonoBehaviour
     public UnityEvent isActive;
     public UnityEvent gameResumed;
 
+    [SerializeField] private AudioClip pauseSound;
+    [SerializeField] private float volumeScalePause;
+
     void Start()
     {
         pauseMenuWrapper.SetActive(false);
@@ -32,6 +35,7 @@ public class PauseMenu : MonoBehaviour
     public void ResumeGame()
     {
         pauseMenuWrapper.SetActive(false);
+        SoundManager.Instance.PlaySound(pauseSound, volumeScalePause);
         isPaused = false;
         gameResumed.Invoke();
         Time.timeScale = 1;
@@ -40,6 +44,7 @@ public class PauseMenu : MonoBehaviour
     public void PauseGame()
     {
         pauseMenuWrapper.SetActive(true);
+        SoundManager.Instance.PlaySound(pauseSound, volumeScalePause);
         isActive.Invoke();
         isPaused = true;
         Time.timeScale = 0;

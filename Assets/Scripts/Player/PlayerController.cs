@@ -15,27 +15,31 @@ public class PlayerController : MonoBehaviour
     public GameObject healParticles;
     public ParticleSystem powerupParticles;
 
+    private Animator playerAnimator;
+
+    public PlayerStats stats;
+    
+    [SerializeField] private AudioClip playerDamage;
+    [SerializeField] private float volumeScale;
+
     private Rigidbody rb;
 
     
     private bool hasPowerUp;
 
-    public float speed = 10.0f;
+    private float speed;
 
-
-    private  float xRangeMin;
-    private float xRangeMax;
-    private  float zRangeMin;
-    private float zRangeMax;
     private Vector3 originalTransform;
     private Quaternion originalRotation;
 
     public GameObject shootingManager;
 
+    public Inventory inventory;
+
+   
 
 
-
-    public int lives = 3;
+    private int lives;
 
 
     
@@ -45,14 +49,11 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         originalTransform = transform.position;
         originalRotation = transform.rotation;
-        
+        playerAnimator = GetComponent<Animator>();
 
-        Vector3[] vercticesList = GameObject.Find("Ground").GetComponent<MeshFilter>().sharedMesh.vertices;
+        lives = stats.CurrentHP;
+        speed = stats.Speed;
 
-        xRangeMin = transform.TransformPoint(vercticesList[0]).x;
-        zRangeMax = transform.TransformPoint(vercticesList[0]).z;
-        xRangeMax = transform.TransformPoint(vercticesList[120]).x;
-        zRangeMin = transform.TransformPoint(vercticesList[120]).z;
     }
 
     // Update is called once per frame
@@ -60,6 +61,8 @@ public class PlayerController : MonoBehaviour
     {
         horizontalAxis = Input.GetAxis("Horizontal");
         verticalAxis = Input.GetAxis("Vertical");
+
+        playerAnimator.SetFloat("Speed_f", Mathf.Abs(horizontalAxis) + Mathf.Abs(verticalAxis));
 
         // calculate movement vector
         Vector3 movement = new Vector3(horizontalAxis, 0.0f, verticalAxis);
@@ -74,33 +77,10 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        CheckBoundaries();
-
-
         
     }
 
-    private void CheckBoundaries()
-    {
-        /*
-        //Checks for the horizontal boudaries
-        if (transform.position.x < xRangeMin)
-            transform.position = new Vector3(xRangeMin, transform.position.y, transform.position.z);
-        if (transform.position.x > xRangeMax)
-            transform.position = new Vector3(xRangeMax, transform.position.y, transform.position.z);
-
-
-        //Move player along the vertical (z) axis, until they reach the boundaries (zRange)
-
-
-        //Checks for the vertical boundaries
-        if (transform.position.z < zRangeMin)
-            transform.position = new Vector3(transform.position.x, transform.position.y, zRangeMin);
-        if (transform.position.z > zRangeMax)
-            transform.position = new Vector3(transform.position.x, transform.position.y, zRangeMax);
-    */
-    }
-
+    //reset the player position when a new wave begins
     public void NewWave()
     {
         transform.position = originalTransform;
@@ -109,9 +89,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if (other.gameObject.CompareTag("Enemy"))
         {
             Instantiate(hurtParticles, transform.position, Quaternion.identity);
+            SoundManager.Instance.PlaySound(playerDamage, volumeScale);
             lives--;
             UIManager.instance.SetHealth(lives);
             if (lives == 0)
@@ -149,6 +131,11 @@ public class PlayerController : MonoBehaviour
         GetComponent<BoxCollider>().isTrigger = false;
         yield return new WaitForSeconds(.1f);
         onPlayerDeath.Invoke();
+    }
+
+    public int GetCurrentHP()
+    {
+        return stats.CurrentHP;
     }
 }
 

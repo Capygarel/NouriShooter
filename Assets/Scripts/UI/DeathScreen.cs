@@ -17,6 +17,9 @@ public class DeathScreen : MonoBehaviour
     public TMPro.TextMeshProUGUI buttonText;
     public bool deathScreenActive = false;
 
+    [SerializeField] private AudioClip endWaveSound;
+    [SerializeField] private float volumeScaleEndWaveSound;
+
     public UnityEvent isActive;
 
     public UnityEvent onNewWaveSelected;
@@ -45,6 +48,7 @@ public class DeathScreen : MonoBehaviour
     {
         Time.timeScale = 0;
         isActive.Invoke();
+        SoundManager.Instance.PlaySound(endWaveSound, volumeScaleEndWaveSound);
         deathMenuWrapper.SetActive(true);
         scoreText.text = GetComponent<UIManager>().score.ToString();
         if (isPlayerDead)

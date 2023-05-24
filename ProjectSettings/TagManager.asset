@@ -10,6 +10,9 @@ TagManager:
   - Powerup
   - Heal
   - Boundary
+  - Obstacle
+  - Bomb
+  - XP
   layers:
   - Default
   - TransparentFX
