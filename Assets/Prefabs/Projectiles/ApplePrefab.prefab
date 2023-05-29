@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4505358352480823614}
   - component: {fileID: 4505358352477399326}
   - component: {fileID: 4505358352478399454}
-  - component: {fileID: 4505358353951465533}
   - component: {fileID: 6768201070205478752}
   - component: {fileID: 2214249587283054686}
+  - component: {fileID: 2223212236147802740}
   - component: {fileID: 1747413349033540759}
   m_Layer: 0
   m_Name: ApplePrefab
@@ -87,19 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4505358353951465533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4505358352480662814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a28679eac37505a48a35a608fcc2a291, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 40
 --- !u!114 &6768201070205478752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +112,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.24241088, y: 0.54454327, z: 0.24241088}
   m_Center: {x: 0, y: 0.14253464, z: 0}
+--- !u!114 &2223212236147802740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4505358352480662814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c87aa06a8195145479aa27118977af98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotSpeed: 0
+  damage: 0
+  range: 0
+  model: {fileID: 4505358352480662814}
 --- !u!54 &1747413349033540759
 Rigidbody:
   m_ObjectHideFlags: 0

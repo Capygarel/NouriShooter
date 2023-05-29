@@ -17,12 +17,22 @@ public class ShootingManager : MonoBehaviour
 
     [SerializeField] private float volumeScale;
 
-    [SerializeField] private PlayerController playerController;
+    [SerializeField] private GameObject player;
+    private PlayerController playerController;
+
+    [SerializeField]
+    private float reloadModifier, shotSpeedModifier, firingRateModifier, damageModifier, rangeModifier;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        reloadTime = playerController.stats.FiringRateModifier;
+        playerController = player.GetComponent<PlayerController>();
+        firingRateModifier = playerController.inventory.modifiedStats.FiringRateModifier;
+        reloadModifier = playerController.inventory.modifiedStats.ReloadModifier;
+        shotSpeedModifier = playerController.inventory.modifiedStats.ShotSpeedModifier;
+        damageModifier = playerController.inventory.modifiedStats.DamageModifier;
+        rangeModifier = playerController.inventory.modifiedStats.RangeModifier;
     }
 
     // Update is called once per frame
@@ -45,8 +55,15 @@ public class ShootingManager : MonoBehaviour
         if (Input.GetMouseButton(0) && reloadTime <= 0)
         {
 
-            reloadTime = playerController.stats.FiringRateModifier;
+            firingRateModifier = playerController.inventory.modifiedStats.FiringRateModifier;
+            reloadModifier = playerController.inventory.modifiedStats.ReloadModifier;
+            shotSpeedModifier = playerController.inventory.modifiedStats.ShotSpeedModifier;
+            damageModifier = playerController.inventory.modifiedStats.DamageModifier;
+            rangeModifier = playerController.inventory.modifiedStats.RangeModifier;
 
+
+            reloadTime = firingRateModifier;
+            GameObject currentProjectile;
             //Triple shot when the player has a powerup
             if (hasPowerUp)
             {
@@ -54,14 +71,18 @@ public class ShootingManager : MonoBehaviour
                 Quaternion secondRotation = transform.rotation * Quaternion.Euler(0, 45, 0);
                 Quaternion thirdRotation = transform.rotation * Quaternion.Euler(0, -45, 0);
                 SoundManager.Instance.PlaySound(appleThrow,volumeScale);
-                Instantiate(projectilePrefab, transform.position, transform.rotation);
-                Instantiate(projectilePrefab, transform.position, secondRotation);
-                Instantiate(projectilePrefab, transform.position, thirdRotation);
+
+                currentProjectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
+                currentProjectile.GetComponent<ProjectileController>().Set(shotSpeedModifier, damageModifier, rangeModifier, transform.position);
+                currentProjectile = Instantiate(projectilePrefab, transform.position, secondRotation);
+                currentProjectile.GetComponent<ProjectileController>().Set(shotSpeedModifier, damageModifier, rangeModifier, transform.position);
+                currentProjectile = Instantiate(projectilePrefab, transform.position, thirdRotation);
+                currentProjectile.GetComponent<ProjectileController>().Set(shotSpeedModifier, damageModifier, rangeModifier, transform.position);
+
             }
             else
             {
-                SoundManager.Instance.PlaySound(appleThrow,volumeScale);
-                Instantiate(projectilePrefab, transform.position, transform.rotation);
+                playerController.inventory.mainWeaponInstance.Fire( reloadModifier,  shotSpeedModifier,  firingRateModifier, damageModifier, rangeModifier);
             }
 
         }

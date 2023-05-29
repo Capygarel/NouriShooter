@@ -10,6 +10,7 @@ public class EnemyStats : MonoBehaviour
 
     [SerializeField]
     private int points, chancesToDropPowerup, chancesToDropHeal;
+    public int damage;
 
     [SerializeField] private AudioClip enemyHitSound, enemyNourishedSound;
     [SerializeField] private float volumeScaleHit, volumeScaleNourished;
@@ -20,6 +21,7 @@ public class EnemyStats : MonoBehaviour
 
     public GameObject powerupPrefab;
     public GameObject healPrefab;
+    public GameObject xpPrefab;
 
 
     public GameObject nourishedParticles;
@@ -73,7 +75,7 @@ public class EnemyStats : MonoBehaviour
         else if (other.CompareTag("Projectile"))
         {
             Destroy(other.gameObject);
-            DealDamage(1f);
+            DealDamage(other.GetComponent<ProjectileController>().damage);
         }
     }
 
@@ -88,6 +90,11 @@ public class EnemyStats : MonoBehaviour
             Instantiate(powerupPrefab, transform.position, transform.rotation);
         else if (roll <= chancesToDropPowerup + chancesToDropHeal && !isQuitting && GameObject.FindWithTag("Heal") == null)
             Instantiate(healPrefab, transform.position, transform.rotation);
+
+        //Instantiate an XP Gem
+
+        Instantiate(xpPrefab, new Vector3(transform.position.x + Random.Range(-1,1), 0 , transform.position.z + Random.Range(1, 1)), transform.rotation);
+
 
         //Play a particle effect on death, then destroy the gameobject
         GameObject obj = Instantiate(particles, transform.position, Quaternion.identity);

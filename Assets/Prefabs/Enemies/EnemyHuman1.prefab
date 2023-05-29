@@ -958,7 +958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a28679eac37505a48a35a608fcc2a291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
+  speed: 0
 --- !u!114 &1684326881898307728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -983,11 +983,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e181cf61305977499a7bb4ef700ef43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  maxHP: 1
+  speed: 3
+  maxHP: 5
   points: 45
   chancesToDropPowerup: 15
   chancesToDropHeal: 20
+  damage: 40
   enemyHitSound: {fileID: 8300000, guid: 230e4a5cb263d4240a47d92dd3cd83d0, type: 3}
   enemyNourishedSound: {fileID: 8300000, guid: 9f269adc62b54bd47ac12d917b7a1e06, type: 3}
   volumeScaleHit: 1
@@ -995,6 +996,7 @@ MonoBehaviour:
   autoAim: 1
   powerupPrefab: {fileID: 246862778057136517, guid: 42b18a31a03516f43938903601bac38e, type: 3}
   healPrefab: {fileID: 4537804178602777869, guid: d9035ea97e909354fa78db30d6f6cc88, type: 3}
+  xpPrefab: {fileID: 4446131693967519089, guid: c5497424856514b2ba61b78375567988, type: 3}
   nourishedParticles: {fileID: 2719261661568278999, guid: e9ad4202b98a6024d92cff375ecedfd9, type: 3}
   deathParticles: {fileID: 7849139064963132884, guid: 7c602fad5e41754409ac90426be1ce53, type: 3}
 --- !u!65 &1684326881898307822
@@ -1005,7 +1007,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6008487730426232555}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.1483622, y: 3.3305087, z: 1}

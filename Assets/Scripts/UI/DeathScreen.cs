@@ -24,7 +24,9 @@ public class DeathScreen : MonoBehaviour
 
     public UnityEvent onNewWaveSelected;
 
-    private bool isPlayerDead = false;
+    public UnityEvent onSceneRestarted;
+
+    public bool isPlayerDead = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +52,7 @@ public class DeathScreen : MonoBehaviour
         isActive.Invoke();
         SoundManager.Instance.PlaySound(endWaveSound, volumeScaleEndWaveSound);
         deathMenuWrapper.SetActive(true);
-        scoreText.text = GetComponent<UIManager>().score.ToString();
+        scoreText.text = UIManager.instance.score.ToString();
         if (isPlayerDead)
         {
             
@@ -81,7 +83,7 @@ public class DeathScreen : MonoBehaviour
 
     public void ReStartScene()
     {
-        
+        onSceneRestarted.Invoke();
         isPlayerDead = false;
         SpawnManager.wavenumber = 0;
         SceneManager.LoadScene(sceneToStart);

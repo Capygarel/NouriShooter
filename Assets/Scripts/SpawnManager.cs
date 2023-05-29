@@ -13,7 +13,7 @@ public class SpawnManager : MonoBehaviour
     private float spawnRangeZ = 20;
     public Camera cam;
 
-    private float startSpawnDelay = .5f;
+    [SerializeField] private float startSpawnDelay = .5f;
     public float spawnInterval = 1f;
 
     public GameObject player;
@@ -61,7 +61,7 @@ public class SpawnManager : MonoBehaviour
     void SpawnRandomAnimal()
     {
         int index = Random.Range(0, animalPrefabsArray.Length);
-        int side = Random.Range(0, 3);
+        int side = Random.Range(0, 4);
         
 
         animalSelected = animalPrefabsArray[index];
@@ -80,11 +80,16 @@ public class SpawnManager : MonoBehaviour
             spawnPosition = new Vector3(player.transform.position.x + Random.Range(-spawnRangeX, spawnRangeX), 0, player.transform.position.z + spawnRangeZ);
             Instantiate(animalSelected, spawnPosition, animalSelected.transform.rotation);
         }
-        else //droite
+        else if (side == 2)//droite
         {
             //spawnPosition = cam.ViewportToWorldPoint(new Vector3(1, Random.Range(0, 1), cam.nearClipPlane));
             spawnPosition = new Vector3(player.transform.position.x + spawnRangeX, 0, player.transform.position.z + Random.Range(-spawnRangeZ, spawnRangeZ));
             Instantiate(animalSelected,spawnPosition , Quaternion.Euler(new Vector3(0,-90,0 )));
+        }
+        else
+        {
+            spawnPosition = new Vector3(player.transform.position.x + Random.Range(-spawnRangeX, spawnRangeX), 0, player.transform.position.z - spawnRangeZ);
+            Instantiate(animalSelected, spawnPosition, Quaternion.Euler(new Vector3(0, 180, 0)));
         }
 
         

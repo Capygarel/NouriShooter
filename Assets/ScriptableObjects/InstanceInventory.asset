@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36b7abd0ed0b494098a3cbd7ede4034, type: 3}
   m_Name: InstanceInventory
   m_EditorClassIdentifier: 
-  newItemType: {fileID: 0}
-  items:
-  - itemType: {fileID: 0}
-    condition: 0
-    ammo: 0
+  modifiedStats: {fileID: 11400000, guid: b652b5055d0a4fd48a0401f98085b300, type: 2}
+  items: []
+  secondaryWeapons: []
+  mainWeapon: {fileID: -7867691891973652622, guid: fea3c6d1ef836cb429f35b28375d36f2, type: 3}
+  mainWeaponInstance: {fileID: 0}

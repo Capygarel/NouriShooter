@@ -27,32 +27,46 @@ public class PlayerController : MonoBehaviour
     
     private bool hasPowerUp;
 
-    private float speed;
-
     private Vector3 originalTransform;
     private Quaternion originalRotation;
 
-    public GameObject shootingManager;
+    public ShootingManager shootingManager;
 
     public Inventory inventory;
 
-   
+    private bool activateLVLUP = false;
 
 
-    private int lives;
 
-
-    
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
         originalTransform = transform.position;
         originalRotation = transform.rotation;
         playerAnimator = GetComponent<Animator>();
 
-        lives = stats.CurrentHP;
-        speed = stats.Speed;
+
+        inventory.SetupInventory();
+
+
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            activateLVLUP = LVLUpManager.instance.isActive;
+            if (!activateLVLUP)
+            {
+                LVLUpManager.instance.PauseGame();
+            }
+            else
+            {
+                LVLUpManager.instance.ResumeGame();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.LeftControl)) inventory.DropLastItem();
 
     }
 
@@ -68,7 +82,7 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(horizontalAxis, 0.0f, verticalAxis);
 
         // add movement to rigidbody velocity
-        rb.velocity = movement * speed;
+        rb.velocity = movement * inventory.modifiedStats.Speed;
 
         // face the direction of movement
         if (movement != Vector3.zero)
@@ -77,7 +91,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        
+
     }
 
     //reset the player position when a new wave begins
@@ -92,43 +106,52 @@ public class PlayerController : MonoBehaviour
         
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Instantiate(hurtParticles, transform.position, Quaternion.identity);
+            GameObject toDestroy = Instantiate(hurtParticles, transform.position, Quaternion.identity);
+            Destroy(toDestroy, 1f);
             SoundManager.Instance.PlaySound(playerDamage, volumeScale);
-            lives--;
-            UIManager.instance.SetHealth(lives);
-            if (lives == 0)
+            inventory.modifiedStats.ChangeCurrentHP( - other.gameObject.GetComponent<EnemyStats>().damage);
+            if (inventory.modifiedStats.CurrentHP == 0)
             {
                 StartCoroutine(DeathAnimation());
             }
         }else if(other.gameObject.CompareTag("Powerup"))
         {
             Destroy(other.gameObject);
-            shootingManager.GetComponent<ShootingManager>().hasPowerUp = true;
+            shootingManager.hasPowerUp = true;
             powerupParticles.Play();
             StartCoroutine(PowerupCooldown(other.gameObject.GetComponent<PowerUp>().duration));
 
-        }else if(other.gameObject.CompareTag("Heal"))
+        }else if(other.gameObject.CompareTag("Item"))
         {
-            Destroy(other.gameObject);
-            lives++;
-            UIManager.instance.SetHealth(lives);
-            Instantiate(healParticles, transform.position, Quaternion.identity);
+            if (other.TryGetComponent(out InstanceItemContainer foundItem))
+            {
+                inventory.EquipNewItem(foundItem.TakeItem());
+            }
+
+            GameObject toDestroy = Instantiate(healParticles, transform.position, Quaternion.identity);
+            Destroy(toDestroy, 1f);
         }
         else if (other.gameObject.CompareTag("Boundary")){
             rb.velocity = Vector3.zero;
         }
     }
 
+    public void UseItems()
+    {
+        inventory.applyEffects();
+    }
+
+
     IEnumerator PowerupCooldown(float powerUpDuration)
     {
         yield return new WaitForSeconds(powerUpDuration);
-        shootingManager.GetComponent<ShootingManager>().hasPowerUp = false;
+        shootingManager.hasPowerUp = false;
         powerupParticles.Stop();
     }
 
     IEnumerator DeathAnimation()
     {
-        GetComponent<BoxCollider>().isTrigger = false;
+        GetComponent<BoxCollider>().enabled = false;
         yield return new WaitForSeconds(.1f);
         onPlayerDeath.Invoke();
     }

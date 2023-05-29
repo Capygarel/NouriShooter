@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644058beba78334459db6a2424587621, type: 3}
+  m_Name: '[3] DamageUp'
+  m_EditorClassIdentifier: 
+  itemName: Damage Up
+  icon: {fileID: 263918227, guid: c0aa572be299a44469d856b184806398, type: 3}
+  description: 
+  level: 0
+  changeMaxHP: 0
+  changeCurrentHP: 0
+  ID: 3
+  model: {fileID: 0}
+  changeReloadTime: 0
+  changeSpeed: 0
+  changeshotSpeed: 0
+  firingRateModifier: 0
+  damageModifier: 1
+  rangeModifier: 0
+  itemBehavior: {fileID: 0}

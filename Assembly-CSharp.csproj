@@ -53,28 +53,37 @@
     <UnityVersion>2021.3.18f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Player\XPController.cs" />
+    <Compile Include="Assets\Scripts\Weapons\WeaponInstance.cs" />
     <Compile Include="Assets\Scripts\Enemies\EnemyStats.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\UI\DeathScreen.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
-    <Compile Include="Assets\ScriptableObjects\ItemData.cs" />
+    <Compile Include="Assets\Scripts\Items\ItemData.cs" />
     <Compile Include="Assets\Scripts\Items\ItemInstance.cs" />
+    <Compile Include="Assets\Scripts\Items\WeaponData.cs" />
     <Compile Include="Assets\Scripts\Common\MoveForward.cs" />
-    <Compile Include="Assets\ScriptableObjects\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Items\Inventory.cs" />
     <Compile Include="Assets\Scripts\Player\PowerUp.cs" />
     <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
+    <Compile Include="Assets\Scripts\TerrainManager.cs" />
+    <Compile Include="Assets\Scripts\Items\InstanceItemContainer.cs" />
     <Compile Include="Assets\Scripts\UI\TitleScreen.cs" />
+    <Compile Include="Assets\Scripts\Player\ProjectileController.cs" />
+    <Compile Include="Assets\Scripts\Items\ItemInstance1.cs" />
+    <Compile Include="Assets\Scripts\Weapons\AppleShooter.cs" />
+    <Compile Include="Assets\Scripts\UI\LVLUpManager.cs" />
     <Compile Include="Assets\Scripts\Common\HealthBar.cs" />
+    <Compile Include="Assets\Scripts\UI\XPDisplayManager.cs" />
     <Compile Include="Assets\Scripts\Player\ShootingManager.cs" />
     <Compile Include="Assets\Scripts\CameraManager.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\UI\CrosshairUI.cs" />
-    <Compile Include="Assets\Scripts\Common\DestroyOutOfBounds.cs" />
-    <Compile Include="Assets\Scripts\TerrainManager.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\Items\IItem.cs" />
-    <Compile Include="Assets\Scripts\Player\ProjectileController.cs" />
+    <Compile Include="Assets\Scripts\Common\DestroyOutOfBounds.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
+    <Compile Include="Assets\Scripts\Items\AttractablePickup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -757,6 +766,9 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
       <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>

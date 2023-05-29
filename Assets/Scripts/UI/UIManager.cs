@@ -30,6 +30,10 @@ public class UIManager : MonoBehaviour
     public UnityEvent onTimeUp;
     public UnityEvent onFinalWaveFinished;
 
+    public XPDisplayManager xpManager;
+
+    [SerializeField] private PlayerController player;
+
     #endregion
 
     private void Awake()
@@ -43,7 +47,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetHealth(GameObject.FindWithTag("Player").GetComponent<PlayerController>().GetCurrentHP());
+        SetHealth(player.inventory.modifiedStats.CurrentHP, player.inventory.modifiedStats.MaxHP);
         DisplayScore();
         lastSecond = timeRemaining;
         globalTime = timeRemaining;
@@ -64,10 +68,10 @@ public class UIManager : MonoBehaviour
         lastSecond = timeRemaining;
     }
 
-    public void SetHealth(int newHealth)
+    public void SetHealth(int newHealth, int maxHealth)
     {
         health = newHealth;
-        healthText.text = "Health\n" + health;
+        healthText.text = "Health\n" + health + "/" + maxHealth;
     }
 
     public void IncreaseScore(int scoreToAdd) {
@@ -82,6 +86,16 @@ public class UIManager : MonoBehaviour
     void DisplayScore()
     {
         scoreText.text = "Score\n" + score;
+    }
+
+    public void UpdateXPBar(float currentXP, float requiredXP)
+    {
+        xpManager.UpdateXPBar(currentXP, requiredXP);
+    }
+
+    public void LevelUp(int level)
+    {
+        xpManager.LevelUp(level);
     }
 
     void UpdateTimer()

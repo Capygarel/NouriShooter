@@ -123,6 +123,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerUpParticles
       objectReference: {fileID: 0}
+    - target: {fileID: 180128, guid: 6586ff0f14125534cae2f5d8f04b7871, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 403952, guid: 6586ff0f14125534cae2f5d8f04b7871, type: 3}
       propertyPath: m_RootOrder
       value: 0
