@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5600105778267430987}
   - component: {fileID: 5600105778274466563}
-  - component: {fileID: 995945708562348866}
+  - component: {fileID: 3066000575222614402}
   - component: {fileID: 977232178424790401}
   - component: {fileID: 7090065819285876953}
   - component: {fileID: -1879034023627801469}
@@ -152,7 +152,7 @@ Animator:
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &995945708562348866
+--- !u!114 &3066000575222614402
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,10 +161,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5600105778267127485}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a28679eac37505a48a35a608fcc2a291, type: 3}
+  m_Script: {fileID: 11500000, guid: 9977bb6c1a38faf46b9fdd088634d1f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 40
+  basicMove: 4
+  timeInterval: 3
 --- !u!114 &977232178424790401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +214,7 @@ MonoBehaviour:
   enemyNourishedSound: {fileID: 8300000, guid: 9f269adc62b54bd47ac12d917b7a1e06, type: 3}
   volumeScaleHit: 1
   volumeScaleNourished: 0.2
-  autoAim: 1
+  autoAim: 0
   powerupPrefab: {fileID: 246862778057136517, guid: 42b18a31a03516f43938903601bac38e, type: 3}
   healPrefab: {fileID: 4537804178602777869, guid: d9035ea97e909354fa78db30d6f6cc88, type: 3}
   xpPrefab: {fileID: 4446131693967519089, guid: c5497424856514b2ba61b78375567988, type: 3}

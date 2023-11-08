@@ -1,23 +1,41 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AppleShooter
+    - AttractablePickup
     - CameraManager
     - CrosshairUI
     - DeathScreen
     - DestroyOutOfBounds
     - EnemyStats
+    - HealthBar
+    - InstanceItemContainer
+    - Inventory
+    - ItemData
+    - ItemInstance
+    - ItemInstance1
+    - LVLUpManager
     - MoveForward
     - PauseMenu
     - PlayerController
+    - PlayerStats
     - PowerUp
+    - ProjectileController
     - ShootingManager
+    - SoundManager
     - SpawnManager
     - TitleScreen
     - UIManager
+    - WeaponData
+    - XPController
+    - XPDisplayManager
     Unity.InputSystem.dll:
+    - UnityEngine.InputSystem.InputActionAsset
+    - UnityEngine.InputSystem.InputActionReference
     - UnityEngine.InputSystem.InputSettings
     - UnityEngine.InputSystem.InputSystemObject
     - UnityEngine.InputSystem.RemoteInputPlayerConnection
+    - UnityEngine.InputSystem.UI.InputSystemUIInputModule
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
@@ -44,6 +62,12 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
   serializedClasses:
+    Unity.InputSystem:
+    - UnityEngine.InputSystem.InputAction
+    - UnityEngine.InputSystem.InputActionMap
+    - UnityEngine.InputSystem.InputBinding
+    - UnityEngine.InputSystem.InputControlScheme
+    - UnityEngine.InputSystem.InputControlScheme/DeviceRequirement
     Unity.TextMeshPro:
     - TMPro.FaceInfo_Legacy
     - TMPro.FontAssetCreationSettings
@@ -84,32 +108,23 @@ ScriptsOnlyBuild:
     fullTypeName: TitleScreen
     methodName: StartScene
   - assembly: Assembly-CSharp
+    fullTypeName: SoundManager
+    methodName: SetMusicSource
+  - assembly: Assembly-CSharp
     fullTypeName: DeathScreen
     methodName: ChoiceButton
   - assembly: Assembly-CSharp
-    fullTypeName: PauseMenu
+    fullTypeName: LVLUpManager
+    methodName: FirstChoice
+  - assembly: Assembly-CSharp
+    fullTypeName: LVLUpManager
     methodName: ResumeGame
   - assembly: Assembly-CSharp
-    fullTypeName: PauseMenu
-    methodName: QuitGame
+    fullTypeName: CrosshairUI
+    methodName: SetCrosshair
   - assembly: Assembly-CSharp
-    fullTypeName: PauseMenu
-    methodName: QuitGame
-  - assembly: Assembly-CSharp
-    fullTypeName: DeathScreen
-    methodName: DisplayEndScreen
-  - assembly: Assembly-CSharp
-    fullTypeName: DeathScreen
-    methodName: PlayerDead
-  - assembly: UnityEngine.CoreModule
-    fullTypeName: UnityEngine.GameObject
-    methodName: SetActive
-  - assembly: UnityEngine.CoreModule
-    fullTypeName: UnityEngine.GameObject
-    methodName: SetActive
-  - assembly: UnityEngine.CoreModule
-    fullTypeName: UnityEngine.GameObject
-    methodName: SetActive
+    fullTypeName: SoundManager
+    methodName: SetMusic
   - assembly: Assembly-CSharp
     fullTypeName: SpawnManager
     methodName: StartNewWave
@@ -119,9 +134,48 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: PlayerController
     methodName: NewWave
-  - assembly: UnityEngine.CoreModule
-    fullTypeName: UnityEngine.GameObject
-    methodName: SetActive
+  - assembly: Assembly-CSharp
+    fullTypeName: SoundManager
+    methodName: SetMusic
+  - assembly: Assembly-CSharp
+    fullTypeName: Inventory
+    methodName: UpdateModifiedStats
+  - assembly: Assembly-CSharp
+    fullTypeName: DeathScreen
+    methodName: DisplayEndScreen
+  - assembly: Assembly-CSharp
+    fullTypeName: DeathScreen
+    methodName: PlayerDead
+  - assembly: Assembly-CSharp
+    fullTypeName: LVLUpManager
+    methodName: FourthChoice
+  - assembly: Assembly-CSharp
+    fullTypeName: LVLUpManager
+    methodName: ResumeGame
+  - assembly: Assembly-CSharp
+    fullTypeName: LVLUpManager
+    methodName: ThirdChoice
+  - assembly: Assembly-CSharp
+    fullTypeName: LVLUpManager
+    methodName: ResumeGame
+  - assembly: Assembly-CSharp
+    fullTypeName: LVLUpManager
+    methodName: SeecondChoice
+  - assembly: Assembly-CSharp
+    fullTypeName: LVLUpManager
+    methodName: ResumeGame
+  - assembly: Assembly-CSharp
+    fullTypeName: CrosshairUI
+    methodName: SetCrosshair
+  - assembly: Assembly-CSharp
+    fullTypeName: SoundManager
+    methodName: SetMusic
+  - assembly: Assembly-CSharp
+    fullTypeName: CrosshairUI
+    methodName: SetCrosshair
+  - assembly: Assembly-CSharp
+    fullTypeName: SoundManager
+    methodName: SetMusic
   - assembly: Assembly-CSharp
     fullTypeName: DeathScreen
     methodName: PlayerDead
@@ -155,6 +209,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 90
@@ -168,48 +226,84 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1588}
+      Script: {instanceID: 1542}
     - Class: 114
-      Script: {instanceID: 1664}
+      Script: {instanceID: 1544}
     - Class: 114
-      Script: {instanceID: 1870}
+      Script: {instanceID: 1626}
     - Class: 114
-      Script: {instanceID: 2466}
+      Script: {instanceID: 1670}
     - Class: 114
-      Script: {instanceID: 2614}
+      Script: {instanceID: 1876}
     - Class: 114
-      Script: {instanceID: 2680}
+      Script: {instanceID: 2484}
     - Class: 114
-      Script: {instanceID: 2892}
+      Script: {instanceID: 2634}
     - Class: 114
-      Script: {instanceID: 3196}
+      Script: {instanceID: 2700}
     - Class: 114
-      Script: {instanceID: 3250}
+      Script: {instanceID: 2856}
     - Class: 114
-      Script: {instanceID: 3828}
+      Script: {instanceID: 3054}
     - Class: 114
-      Script: {instanceID: 3916}
+      Script: {instanceID: 3126}
     - Class: 114
-      Script: {instanceID: 5324}
+      Script: {instanceID: 3218}
     - Class: 114
-      Script: {instanceID: 5908}
+      Script: {instanceID: 3272}
     - Class: 114
-      Script: {instanceID: 6046}
+      Script: {instanceID: 3310}
     - Class: 114
-      Script: {instanceID: 6072}
+      Script: {instanceID: 3854}
     - Class: 114
-      Script: {instanceID: 6416}
+      Script: {instanceID: 3904}
     - Class: 114
-      Script: {instanceID: 6502}
+      Script: {instanceID: 3944}
     - Class: 114
-      Script: {instanceID: 6924}
+      Script: {instanceID: 4214}
     - Class: 114
-      Script: {instanceID: 7214}
+      Script: {instanceID: 4446}
     - Class: 114
-      Script: {instanceID: 7666}
+      Script: {instanceID: 5072}
+    - Class: 114
+      Script: {instanceID: 5132}
+    - Class: 114
+      Script: {instanceID: 5198}
+    - Class: 114
+      Script: {instanceID: 5214}
+    - Class: 114
+      Script: {instanceID: 5380}
+    - Class: 114
+      Script: {instanceID: 5438}
+    - Class: 114
+      Script: {instanceID: 5956}
+    - Class: 114
+      Script: {instanceID: 5960}
+    - Class: 114
+      Script: {instanceID: 5974}
+    - Class: 114
+      Script: {instanceID: 6114}
+    - Class: 114
+      Script: {instanceID: 6142}
+    - Class: 114
+      Script: {instanceID: 6584}
+    - Class: 114
+      Script: {instanceID: 6892}
+    - Class: 114
+      Script: {instanceID: 7008}
+    - Class: 114
+      Script: {instanceID: 7298}
+    - Class: 114
+      Script: {instanceID: 7634}
+    - Class: 114
+      Script: {instanceID: 7756}
+    - Class: 114
+      Script: {instanceID: 8280}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
+      Script: {instanceID: 0}
+    - Class: 135
       Script: {instanceID: 0}
     - Class: 136
       Script: {instanceID: 0}
@@ -252,6 +346,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 104
@@ -259,29 +357,31 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1588}
+      Script: {instanceID: 1542}
     - Class: 114
-      Script: {instanceID: 2212}
+      Script: {instanceID: 1544}
     - Class: 114
-      Script: {instanceID: 2680}
+      Script: {instanceID: 2222}
     - Class: 114
-      Script: {instanceID: 2892}
+      Script: {instanceID: 2700}
     - Class: 114
-      Script: {instanceID: 3196}
+      Script: {instanceID: 3218}
     - Class: 114
-      Script: {instanceID: 4308}
+      Script: {instanceID: 4214}
     - Class: 114
-      Script: {instanceID: 4578}
+      Script: {instanceID: 4338}
     - Class: 114
-      Script: {instanceID: 4616}
+      Script: {instanceID: 4614}
     - Class: 114
-      Script: {instanceID: 5324}
+      Script: {instanceID: 4654}
     - Class: 114
-      Script: {instanceID: 5908}
+      Script: {instanceID: 5380}
     - Class: 114
-      Script: {instanceID: 6072}
+      Script: {instanceID: 5974}
     - Class: 114
-      Script: {instanceID: 6416}
+      Script: {instanceID: 6142}
+    - Class: 114
+      Script: {instanceID: 6496}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -301,10 +401,10 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: ae83e830e7a90c0aff918c4c2e520825
     assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UIElements
-    className: PanelRaycaster
+    namespaceName: UnityEngine.UI
+    className: GraphicRaycaster
   - hash:
       serializedVersion: 2
       Hash: a6e561615949734e9f12f9b61661f43e
@@ -313,13 +413,31 @@ ScriptsOnlyBuild:
     className: Image
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UIElements
+    className: PanelRaycaster
+  - hash:
+      serializedVersion: 2
       Hash: c24a778d9aa393e11e54bff320ca63de
     assemblyName: Unity.InputSystem.dll
     namespaceName: UnityEngine.InputSystem
     className: PlayerInput
   - hash:
       serializedVersion: 2
-      Hash: 4be6e1b80db6b3b975d19a2c719397b9
+      Hash: 28bfd986cde2fbb3086dfd911ae668de
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: XPController
+  - hash:
+      serializedVersion: 2
+      Hash: da09da5f6e46e1c6fa574c162459fc2f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WeaponInstance
+  - hash:
+      serializedVersion: 2
+      Hash: 430dd9b0d513934ae2cbf15bf063de00
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemyStats
@@ -379,7 +497,7 @@ ScriptsOnlyBuild:
     className: UnityOnMouseExitMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 58b4640b4ed84b38821e684f34e057a0
+      Hash: 18c6b4b27802e96655abfa8e7d1fca4c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SpawnManager
@@ -433,7 +551,7 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
-      Hash: 173df34e58414aef03c1516b960bf16d
+      Hash: 158670584e1cb9565d6f842a2f42e4a9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DeathScreen
@@ -445,7 +563,7 @@ ScriptsOnlyBuild:
     className: UnityOnBecameVisibleMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 5fa707169b02631742f5b62af98467e5
+      Hash: f805a644c69fd32c274dba213bb2d661
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -487,7 +605,7 @@ ScriptsOnlyBuild:
     className: UnityMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 20c5583f84a7fc0262e950db3eeb20f6
+      Hash: 3f6e36028f968592f331fa26cfae1690
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ItemData
@@ -503,12 +621,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestRunner.Utils
     className: TestRunCallbackListener
-  - hash:
-      serializedVersion: 2
-      Hash: ae83e830e7a90c0aff918c4c2e520825
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: GraphicRaycaster
   - hash:
       serializedVersion: 2
       Hash: f40fedccd4adbc76605bea6d67537e4b
@@ -547,10 +659,22 @@ ScriptsOnlyBuild:
     className: TestResultRendererCallback
   - hash:
       serializedVersion: 2
+      Hash: 2e56dbb99a0483c08932621ffa81d12b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ItemInstance
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnDropdownValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 3f80a2df80652a6d5c746130d3a976ed
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WeaponData
   - hash:
       serializedVersion: 2
       Hash: 5d5b0c61f3ab6ff5f41b1bbe19764526
@@ -589,7 +713,7 @@ ScriptsOnlyBuild:
     className: UnityOnMouseDownMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 60c6b1061304efdd2d22179fb3882d1a
+      Hash: 91bf322c50da296137ee04fee7370b22
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Inventory
@@ -697,7 +821,7 @@ ScriptsOnlyBuild:
     className: ActivationTrack
   - hash:
       serializedVersion: 2
-      Hash: 722c46927c2fb35c25e98c61a91d76da
+      Hash: d068d712377b3915cede61c7582aecf8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PauseMenu
@@ -737,6 +861,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.InputSystem.dll
     namespaceName: UnityEngine.InputSystem.UI
     className: TrackedDeviceRaycaster
+  - hash:
+      serializedVersion: 2
+      Hash: 02e2181095d9bdd9cee584308cba212d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SoundManager
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -797,6 +927,18 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: DictionaryAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TerrainManager
+  - hash:
+      serializedVersion: 2
+      Hash: def8a371750df7796a86372080a101f6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: InstanceItemContainer
   - hash:
       serializedVersion: 2
       Hash: 6980e81ddc615a861309d2d659cc3760
@@ -877,6 +1019,12 @@ ScriptsOnlyBuild:
     className: RemoteInputPlayerConnection
   - hash:
       serializedVersion: 2
+      Hash: 935036b6bd9b32b47809a381007cb388
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ProjectileController
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
@@ -887,6 +1035,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnBeginDragMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 2e56dbb99a0483c08932621ffa81d12b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ItemInstance1
   - hash:
       serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
@@ -905,6 +1059,18 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_InputField
+  - hash:
+      serializedVersion: 2
+      Hash: da09da5f6e46e1c6fa574c162459fc2f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AppleShooter
+  - hash:
+      serializedVersion: 2
+      Hash: f41fde96140de280dd435fd2e559ee4a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AttractablePickup
   - hash:
       serializedVersion: 2
       Hash: bcaee4c2a83047257b5f47d6ed264b75
@@ -941,6 +1107,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_FontAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 2bfbc834768653951bdffa5b9ad9d6e7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LVLUpManager
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -991,6 +1163,18 @@ ScriptsOnlyBuild:
     className: PlayerInputManagerEditor
   - hash:
       serializedVersion: 2
+      Hash: 4f35e2a28d9eeeb416c0291a1da02769
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HealthBar
+  - hash:
+      serializedVersion: 2
+      Hash: 37ab53d50aba525d0809029770ed1cda
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: XPDisplayManager
+  - hash:
+      serializedVersion: 2
       Hash: a1aa98c78061c6f03a8c124cda576e67
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -1009,7 +1193,7 @@ ScriptsOnlyBuild:
     className: AspectRatioFitter
   - hash:
       serializedVersion: 2
-      Hash: 4b7fb226ba108aee067ae234c9a3d3a7
+      Hash: 2c48de1decceea2c1482c01dc8f6996b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ShootingManager
@@ -1135,7 +1319,7 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 43daf0c8e0fec2aed82c65ec68c7f35b
+      Hash: bdc2bd2f0279dad74e98f2c7fdd07a2e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -1195,10 +1379,16 @@ ScriptsOnlyBuild:
     className: EventTrigger
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 7a92d7f6568b710de03b52702fb6de0e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CrosshairUI
+  - hash:
+      serializedVersion: 2
+      Hash: 2e56dbb99a0483c08932621ffa81d12b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: IItem
   - hash:
       serializedVersion: 2
       Hash: 0713e001d0d6f9df5412ad93530a175a
@@ -1303,6 +1493,12 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
+      Hash: e385c34f4e7ba49d7aba26c77cff5ed5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerStats
+  - hash:
+      serializedVersion: 2
       Hash: 8220b46879dc5e37db1b940c938f5744
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -1341,4 +1537,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Title Screen.unity
   - Assets/Scenes/Prototype 2.unity
-  playerPath: "A:/Cr\xE9ation Jeu vid\xE9o/Unity Projects/NouriShooter/builds/0.4/NouriShooter.exe"
+  playerPath: "A:/Cr\xE9ation Jeu vid\xE9o/Unity Projects/NouriShooter/builds/0.5/NouriShooter.exe"

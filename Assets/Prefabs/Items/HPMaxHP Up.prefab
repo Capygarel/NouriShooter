@@ -133,8 +133,8 @@ MonoBehaviour:
   itemType: {fileID: 11400000, guid: 1a7f55d1c92a7314f9a7820f0e3499e8, type: 2}
   level: 0
   indexInventory: 0
-  changeMaxHP: 1
-  changeCurrentHP: 1
+  changeMaxHP: 25
+  changeCurrentHP: 25
   changeReloadTime: 0
   changeSpeed: 0
   changeshotSpeed: 0

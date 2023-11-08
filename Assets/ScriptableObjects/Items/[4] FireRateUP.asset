@@ -23,7 +23,7 @@ MonoBehaviour:
   changeReloadTime: 0
   changeSpeed: 0
   changeshotSpeed: 0
-  firingRateModifier: -0.1
+  firingRateModifier: -0.05
   damageModifier: 0
   rangeModifier: 0
   itemBehavior: {fileID: 0}

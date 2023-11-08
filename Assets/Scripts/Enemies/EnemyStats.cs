@@ -35,7 +35,7 @@ public class EnemyStats : MonoBehaviour
     void Start()
     {
 
-        gameObject.GetComponent<MoveForward>().speed = speed;
+        gameObject.GetComponent<EnemyMovement>().speed = speed;
         isQuitting = false;
         //Spawns looking at the player
         transform.rotation = Quaternion.LookRotation(GameObject.Find("Player").transform.position - transform.position);

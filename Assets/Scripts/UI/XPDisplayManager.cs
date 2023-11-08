@@ -11,7 +11,7 @@ public class XPDisplayManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI xpTxt;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         xpBarImage.fillAmount = 0f;
         levelTxt.text = "Level 0";

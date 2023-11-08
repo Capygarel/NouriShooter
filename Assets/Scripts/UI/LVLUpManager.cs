@@ -17,6 +17,12 @@ public class LVLUpManager : MonoBehaviour
     public List<IItem> possiblePicks;
 
     public GameObject choice1Wrapper, choice2Wrapper, choice3Wrapper, choice4Wrapper;
+
+    private Image choice1Image, choice2Image, choice3Image, choice4Image;
+
+    private TextMeshProUGUI choice1Text, choice2Text, choice3Text, choice4Text;
+
+    int firstOptionIndex, secondOptionIndex, thirdOptionIndex, fourthOptionIndex;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +30,19 @@ public class LVLUpManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+
+        choice1Image = choice1Wrapper.GetComponentInChildren<Image>();
+        choice1Text = choice1Wrapper.GetComponentInChildren<TextMeshProUGUI>();
+
+        choice2Image = choice2Wrapper.GetComponentInChildren<Image>();
+        choice2Text = choice2Wrapper.GetComponentInChildren<TextMeshProUGUI>();
+
+        choice3Image = choice3Wrapper.GetComponentInChildren<Image>();
+        choice3Text = choice3Wrapper.GetComponentInChildren<TextMeshProUGUI>();
+
+        choice4Image = choice4Wrapper.GetComponentInChildren<Image>();
+        choice4Text = choice4Wrapper.GetComponentInChildren<TextMeshProUGUI>();
+
     }
 
     // Update is called once per frame
@@ -34,18 +53,45 @@ public class LVLUpManager : MonoBehaviour
 
     public void PauseGame()
     {
+        SelectOptions();
         LvlUpScreen.SetActive(true);
         isActive = true;
         Time.timeScale = 0f;
 
-        choice1Wrapper.GetComponentInChildren<Image>().sprite = possiblePicks[0].itemType.icon;
-        choice1Wrapper.GetComponentInChildren<TextMeshProUGUI>().text = possiblePicks[0].itemType.itemName;
-        choice2Wrapper.GetComponentInChildren<Image>().sprite = possiblePicks[1].itemType.icon;
-        choice2Wrapper.GetComponentInChildren<TextMeshProUGUI>().text = possiblePicks[1].itemType.itemName;
-        choice3Wrapper.GetComponentInChildren<Image>().sprite = possiblePicks[2].itemType.icon;
-        choice3Wrapper.GetComponentInChildren<TextMeshProUGUI>().text = possiblePicks[2].itemType.itemName;
-        choice4Wrapper.GetComponentInChildren<Image>().sprite = possiblePicks[3].itemType.icon;
-        choice4Wrapper.GetComponentInChildren<TextMeshProUGUI>().text = possiblePicks[3].itemType.itemName;
+
+
+    }
+
+    private void SelectOptions()
+    {
+
+        firstOptionIndex = Random.Range(0, possiblePicks.Count);
+
+        secondOptionIndex = Random.Range(0, possiblePicks.Count);
+        while(secondOptionIndex == firstOptionIndex)
+            secondOptionIndex = Random.Range(0, possiblePicks.Count);
+
+        thirdOptionIndex = Random.Range(0, possiblePicks.Count);
+        while (thirdOptionIndex == firstOptionIndex || thirdOptionIndex == secondOptionIndex)
+            thirdOptionIndex = Random.Range(0, possiblePicks.Count);
+
+        fourthOptionIndex = Random.Range(0, possiblePicks.Count);
+        while (fourthOptionIndex == firstOptionIndex || fourthOptionIndex == secondOptionIndex || fourthOptionIndex == thirdOptionIndex)
+            fourthOptionIndex = Random.Range(0, possiblePicks.Count);
+
+        Debug.Log(firstOptionIndex + " " + secondOptionIndex + " " + thirdOptionIndex + " " + fourthOptionIndex);
+
+        choice1Image.sprite = possiblePicks[firstOptionIndex].itemType.icon;
+        choice1Text.text = possiblePicks[firstOptionIndex].itemType.itemName;
+
+        choice2Image.sprite= possiblePicks[secondOptionIndex].itemType.icon;
+        choice2Text.text = possiblePicks[secondOptionIndex].itemType.itemName;
+
+        choice3Image.sprite = possiblePicks[thirdOptionIndex].itemType.icon;
+        choice3Text.text = possiblePicks[thirdOptionIndex].itemType.itemName;
+
+        choice4Image.sprite = possiblePicks[fourthOptionIndex].itemType.icon;
+        choice4Text.text = possiblePicks[fourthOptionIndex].itemType.itemName;
     }
 
     public void ResumeGame()
@@ -57,42 +103,42 @@ public class LVLUpManager : MonoBehaviour
 
     public void FirstChoice()
     {
-        if (inventory.IsItemInInventory(possiblePicks[0]) < 0)
+        if (inventory.IsItemInInventory(possiblePicks[firstOptionIndex]) < 0)
         {
-            possiblePicks[0] = Instantiate(possiblePicks[0]);
-            inventory.EquipNewItem(possiblePicks[0]);
+            possiblePicks[firstOptionIndex] = Instantiate(possiblePicks[firstOptionIndex]);
+            inventory.EquipNewItem(possiblePicks[firstOptionIndex]);
        } else
-            inventory.UpgradeItem(inventory.IsItemInInventory(possiblePicks[0]));
+            inventory.UpgradeItem(inventory.IsItemInInventory(possiblePicks[firstOptionIndex]));
 
     }
     public void SeecondChoice()
     {
-        if (inventory.IsItemInInventory(possiblePicks[1]) < 0)
+        if (inventory.IsItemInInventory(possiblePicks[secondOptionIndex]) < 0)
         {
-            possiblePicks[1] = Instantiate(possiblePicks[1]);
-            inventory.EquipNewItem(possiblePicks[1]);
+            possiblePicks[secondOptionIndex] = Instantiate(possiblePicks[secondOptionIndex]);
+            inventory.EquipNewItem(possiblePicks[secondOptionIndex]);
         }
         else
-            inventory.UpgradeItem(inventory.IsItemInInventory(possiblePicks[1]));
+            inventory.UpgradeItem(inventory.IsItemInInventory(possiblePicks[secondOptionIndex]));
 
     }
     public void ThirdChoice()
     {
-        if (inventory.IsItemInInventory(possiblePicks[2]) < 0) {
-            possiblePicks[2] = Instantiate(possiblePicks[2]);
-            inventory.EquipNewItem(possiblePicks[2]);
+        if (inventory.IsItemInInventory(possiblePicks[thirdOptionIndex]) < 0) {
+            possiblePicks[thirdOptionIndex] = Instantiate(possiblePicks[thirdOptionIndex]);
+            inventory.EquipNewItem(possiblePicks[thirdOptionIndex]);
         }else
-            inventory.UpgradeItem(inventory.IsItemInInventory(possiblePicks[2]));
+            inventory.UpgradeItem(inventory.IsItemInInventory(possiblePicks[thirdOptionIndex]));
 
     }
 
     public void FourthChoice()
     {
-        if (inventory.IsItemInInventory(possiblePicks[3]) < 0) {
-            possiblePicks[3] = Instantiate(possiblePicks[3]);
-            inventory.EquipNewItem(possiblePicks[3]);
+        if (inventory.IsItemInInventory(possiblePicks[fourthOptionIndex]) < 0) {
+            possiblePicks[fourthOptionIndex] = Instantiate(possiblePicks[fourthOptionIndex]);
+            inventory.EquipNewItem(possiblePicks[fourthOptionIndex]);
         }else
-            inventory.UpgradeItem(inventory.IsItemInInventory(possiblePicks[3]));
+            inventory.UpgradeItem(inventory.IsItemInInventory(possiblePicks[fourthOptionIndex]));
 
     }
     

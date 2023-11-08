@@ -8,6 +8,10 @@ public class XPController : MonoBehaviour
     public float currentXP, requiredXP;
     public PlayerStats modifiedPlayerStats;
     private float xpAreaSize;
+
+    [SerializeField] private float xpPowerConstant, xpAdditionConstant;
+
+
     [SerializeField] private GameObject player;
     // Start is called before the first frame update
     void Start()
@@ -39,10 +43,17 @@ public class XPController : MonoBehaviour
     {
         modifiedPlayerStats.Level++;
         currentXP -= requiredXP;
+        requiredXP = CalculateNewXPRequirements();
         UIManager.instance.UpdateXPBar(currentXP, requiredXP);
         UIManager.instance.LevelUp(modifiedPlayerStats.Level);
         LVLUpManager.instance.PauseGame();
 
+
+    }
+
+    private int CalculateNewXPRequirements()
+    {
+        return Mathf.RoundToInt(Mathf.Pow( 5 * modifiedPlayerStats.Level, xpPowerConstant) + xpAdditionConstant);
     }
 
     private void OnTriggerEnter(Collider other)
